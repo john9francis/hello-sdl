@@ -16,3 +16,8 @@ How to set up:
 # Goals:
 - test all the capabilities of SDL including graphics, sound, and input bindings
 - cross development and cross compilation!
+
+# Todo:
+1. figure out how to build for webasm using [emcc](https://developer.mozilla.org/en-US/docs/WebAssembly/C_to_Wasm)
+2. build for mac
+3. build for linux

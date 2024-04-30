@@ -1,8 +1,6 @@
 SRCDIR = src
 INCLUDEDIR = include
-
 SDLDIR = sdl
-
 WIN_DIST_DIR = win
 
 SRCS = $(wildcard $(SRCDIR)/*.cc)

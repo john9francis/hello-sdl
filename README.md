@@ -4,8 +4,15 @@ Development environment
 - Windows 11
 - SDL2-2.30.2
 
+## Setting up development environment in Windows
 
-How to set up:
+How to set up g++ and make:
+
+
+How to set up emscription:
+- followed instructions [here](https://emscripten.org/docs/getting_started/downloads.html#platform-notes-installation-instructions-sdk)
+
+How to set up SDL:
 1. Download the latest release of SDL from the [SDL website.](https://www.libsdl.org/) make sure to download the 'devel' version for development.
 2. create a directory called 'sdl' and place the entire release in that directory.
 3. Find the dll file in the following location: sdl/SDL2\<version number\>/x86_64-w64-mingw32/bin/SDL2.dll

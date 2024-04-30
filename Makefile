@@ -8,6 +8,9 @@ WIN_DIST_DIR = win
 SRCS = $(wildcard $(SRCDIR)/*.cc)
 
 all:
+	@echo to build for windows, run 'make windows'
+
+windows:
 	if exist $(WIN_DIST_DIR) rmdir /s /q $(WIN_DIST_DIR)
 	mkdir $(WIN_DIST_DIR)
 	g++ main.cc $(SRCS) -o $(WIN_DIST_DIR)/main \

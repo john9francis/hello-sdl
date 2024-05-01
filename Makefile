@@ -7,7 +7,9 @@ WEB_DIST_DIR = wasm
 SRCS = $(wildcard $(SRCDIR)/*.cc)
 
 all:
-	@echo to build for windows, run 'make windows'
+	@echo options:
+	@echo 'make windows' for a windows build
+	@echo 'make web' for a web build with wasm
 
 windows:
 	if exist $(WIN_DIST_DIR) rmdir /s /q $(WIN_DIST_DIR)

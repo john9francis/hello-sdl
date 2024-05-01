@@ -1,5 +1,8 @@
 #include <iostream>
 
+#ifndef PLAYER_HH
+#define PLAYER_HH
+
 class Player{
 public:
   Player();
@@ -28,3 +31,5 @@ private:
 
   int speed;
 };
+
+#endif

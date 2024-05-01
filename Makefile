@@ -14,7 +14,7 @@ all:
 windows:
 	if exist $(WIN_DIST_DIR) rmdir /s /q $(WIN_DIST_DIR)
 	mkdir $(WIN_DIST_DIR)
-	g++ main.cc $(SRCS) -o $(WIN_DIST_DIR)/main \
+	g++ web_main.cc $(SRCS) -o $(WIN_DIST_DIR)/main \
 	-I$(INCLUDEDIR) \
 	-I$(SRCDIR) \
 	-I$(SDLDIR)/SDL2-2.30.2/x86_64-w64-mingw32/include \

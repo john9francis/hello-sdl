@@ -1,6 +1,9 @@
 #include <SDL2/SDL.h>
 #include "player.hh"
+
+#ifdef __EMSCRIPTEN__
 #include "emscripten.h"
+#endif
 
 // TODO: Declare global (to this file) variables
 Player p;
@@ -88,7 +91,9 @@ void init(){
 void mainloop(){
 
   if(quit){
+    #ifdef __EMSCRIPTEN__
     emscripten_cancel_main_loop();
+    #endif
   }
 
   // update stuff
@@ -118,8 +123,10 @@ int main(int argc, char* argv[])
   init();
 
   // event loop
+  #ifdef __EMSCRIPTEN__
   emscripten_set_main_loop(mainloop, 0, 1);
-  
+  #endif
+
   SDL_DestroyRenderer(renderer);
   SDL_DestroyWindow(window);
   SDL_Quit();

@@ -9,6 +9,8 @@ Player::Player(){
   height = 25;
   speed = 10;
 
+  inputs = InputSingleton::GetInstance();
+
   moving_up = false;
   moving_down = false;
   moving_left = false;
@@ -16,16 +18,16 @@ Player::Player(){
 }
 
 void Player::Update(){
-  if (moving_down){
+  if (inputs->s_down){
     y += speed;
   }
-  if (moving_up){
+  if (inputs->w_down){
     y -= speed;
   }
-  if (moving_left){
+  if (inputs->a_down){
     x -= speed;
   }
-  if (moving_right){
+  if (inputs->d_down){
     x += speed;
   }
 }

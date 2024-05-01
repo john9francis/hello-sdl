@@ -1,4 +1,5 @@
 #include <iostream>
+#include "inputs.hh"
 
 #ifndef PLAYER_HH
 #define PLAYER_HH
@@ -30,6 +31,8 @@ private:
   bool moving_down;
 
   int speed;
+
+  InputSingleton* inputs;
 };
 
 #endif

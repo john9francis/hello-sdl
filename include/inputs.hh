@@ -6,11 +6,19 @@
 class InputSingleton {
 public:
   static InputSingleton* GetInstance();
+  void Update();
+
+  bool w_down = false;
+  bool a_down = false;
+  bool s_down = false;
+  bool d_down = false;
+  bool quit = false;
 private:
-  InputSingleton();
-  ~InputSingleton();
+  InputSingleton() {};
 
   static InputSingleton* instance;
+
+  
 };
 
 #endif

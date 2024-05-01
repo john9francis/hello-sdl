@@ -1,50 +1,7 @@
 #include <SDL2/SDL.h>
 #include "player.hh"
+#include "inputs.hh"
 
-void doInput(Player &player){
-  SDL_Event event;
-
-  while (SDL_PollEvent(&event)){
-    switch (event.type){
-      case SDL_QUIT:
-      exit(0);
-      break;
-
-      case SDL_KEYDOWN:
-      if (event.key.keysym.sym == SDLK_w) {
-        player.SetMovingUp(true);
-      }
-      if (event.key.keysym.sym == SDLK_s) {
-        player.SetMovingDown(true);
-      }
-      if (event.key.keysym.sym == SDLK_a) {
-        player.SetMovingLeft(true);
-      }
-      if (event.key.keysym.sym == SDLK_d) {
-        player.SetMovingRight(true);
-      }
-      break;
-
-      case SDL_KEYUP:
-      if (event.key.keysym.sym == SDLK_w) {
-        player.SetMovingUp(false);
-      }
-      if (event.key.keysym.sym == SDLK_s) {
-        player.SetMovingDown(false);
-      }
-      if (event.key.keysym.sym == SDLK_a) {
-        player.SetMovingLeft(false);
-      }
-      if (event.key.keysym.sym == SDLK_d) {
-        player.SetMovingRight(false);
-      }
-      break;
-
-      default:
-      break;
-    }
-  }
-}
 
 SDL_Rect* initRect(Player& p){
   // create a rect
@@ -65,6 +22,9 @@ void updateRectPos(SDL_Rect* rect, Player& p){
 int main(int argc, char* argv[])
 {
 
+  // start a singleton
+  InputSingleton* inputs = InputSingleton::GetInstance();
+
   Player p = Player();
   const int WIDTH = 640;
   const int HEIGHT = 480;
@@ -80,7 +40,10 @@ int main(int argc, char* argv[])
   // event loop
   while (1){
     // update stuff
-    doInput(p);
+    inputs->Update();
+    if (inputs->quit){
+      exit(0);
+    }
     p.Update();
     updateRectPos(rect, p);
 

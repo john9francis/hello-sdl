@@ -2,3 +2,7 @@ sdl/
 SDL2.dll
 *.exe
 .vscode
+
+
+win/
+wasm/

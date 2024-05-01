@@ -25,7 +25,7 @@ windows:
 web:
 	if exist $(WEB_DIST_DIR) rmdir /s /q $(WEB_DIST_DIR)	
 	mkdir $(WEB_DIST_DIR)
-	emcc main.cc $(SRCS) -o $(WEB_DIST_DIR)/main.html \
+	emcc web_main.cc $(SRCS) -o $(WEB_DIST_DIR)/main.html \
 	-I$(INCLUDEDIR) \
 	-I$(SRCDIR) \
 	-s USE_SDL=2 \

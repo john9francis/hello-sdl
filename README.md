@@ -25,7 +25,5 @@ How to set up SDL:
 - cross development and cross compilation!
 
 # Todo:
-1. figure out how to build for webasm using [emcc](https://developer.mozilla.org/en-US/docs/WebAssembly/C_to_Wasm)
- - [making a wasm game](https://robaboukhalil.medium.com/porting-games-to-the-web-with-webassembly-70d598e1a3ec)
-2. build for mac
-3. build for linux
+- [X] Figure out how to build for webasm using [emcc](https://developer.mozilla.org/en-US/docs/WebAssembly/C_to_Wasm) resource: [making a wasm game](https://robaboukhalil.medium.com/porting-games-to-the-web-with-webassembly-70d598e1a3ec)
+- [ ] Make a single main.cc file that can build for web or for windows 

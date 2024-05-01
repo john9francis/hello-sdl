@@ -78,6 +78,13 @@ void updateRectPos(SDL_Rect* rect, Player& p){
 
 // TODO: void init to initialize all those global vars
 void init(){
+
+  #ifdef __EMSCRIPTEN__
+  std::cout << "found emscripten!" << std::endl;
+  #else
+  std::cout << "couldn't find emscripten" << std::endl;
+  #endif
+
   p = Player();
 
   SDL_Init(SDL_INIT_VIDEO);

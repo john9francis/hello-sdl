@@ -6,3 +6,5 @@ SDL2.dll
 
 win/
 wasm/
+
+*.zip

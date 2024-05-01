@@ -1,5 +1,6 @@
 #include <SDL2/SDL.h>
 #include "player.hh"
+#include "inputs.hh"
 
 #ifdef __EMSCRIPTEN__
 #include "emscripten.h"
@@ -13,51 +14,8 @@ SDL_Window* window = NULL;
 SDL_Renderer* renderer = NULL;
 SDL_Rect* rect;
 bool quit = false;
+InputSingleton* inputs;
 
-void doInput(Player &player){
-  SDL_Event event;
-
-  while (SDL_PollEvent(&event)){
-    switch (event.type){
-      case SDL_QUIT:
-      quit = true;
-      break;
-
-      case SDL_KEYDOWN:
-      if (event.key.keysym.sym == SDLK_w) {
-        player.SetMovingUp(true);
-      }
-      if (event.key.keysym.sym == SDLK_s) {
-        player.SetMovingDown(true);
-      }
-      if (event.key.keysym.sym == SDLK_a) {
-        player.SetMovingLeft(true);
-      }
-      if (event.key.keysym.sym == SDLK_d) {
-        player.SetMovingRight(true);
-      }
-      break;
-
-      case SDL_KEYUP:
-      if (event.key.keysym.sym == SDLK_w) {
-        player.SetMovingUp(false);
-      }
-      if (event.key.keysym.sym == SDLK_s) {
-        player.SetMovingDown(false);
-      }
-      if (event.key.keysym.sym == SDLK_a) {
-        player.SetMovingLeft(false);
-      }
-      if (event.key.keysym.sym == SDLK_d) {
-        player.SetMovingRight(false);
-      }
-      break;
-
-      default:
-      break;
-    }
-  }
-}
 
 SDL_Rect* initRect(Player& p){
   // create a rect
@@ -92,6 +50,8 @@ void init(){
   renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
   rect = initRect(p);
+
+  inputs = InputSingleton::GetInstance();
 }
 
 // TODO: void mainloop to define the stuff to happen every loop.
@@ -104,7 +64,7 @@ void mainloop(){
   }
 
   // update stuff
-  doInput(p);
+  inputs->Update();
   p.Update();
   updateRectPos(rect, p);
 

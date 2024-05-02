@@ -2,6 +2,8 @@
 #include "player.hh"
 #include "inputs.hh"
 
+#include "main.hh"
+
 
 SDL_Rect* initRect(Player& p){
   // create a rect
@@ -21,6 +23,7 @@ void updateRectPos(SDL_Rect* rect, Player& p){
 
 int main(int argc, char* argv[])
 {
+  DevMain::Init();
 
   // start a singleton
   InputSingleton* inputs = InputSingleton::GetInstance();
@@ -40,6 +43,8 @@ int main(int argc, char* argv[])
   // event loop
   while (1){
     // update stuff
+    DevMain::Update();
+    
     inputs->Update();
     if (inputs->quit){
       exit(0);

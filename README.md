@@ -7,7 +7,8 @@ Development environment
 ## Setting up development environment in Windows
 
 How to set up g++ and make:
-
+- [download gnu tools for windows](https://sourceforge.net/projects/gnuwin32/)
+- [download make](https://gnuwin32.sourceforge.net/packages/make.htm)
 
 How to set up emscription:
 - followed instructions [here](https://emscripten.org/docs/getting_started/downloads.html#platform-notes-installation-instructions-sdk)

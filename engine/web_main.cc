@@ -2,6 +2,8 @@
 #include "player.hh"
 #include "inputs.hh"
 
+#include "main.hh"
+
 #ifdef __EMSCRIPTEN__
 #include "emscripten.h"
 #endif
@@ -36,6 +38,7 @@ void updateRectPos(SDL_Rect* rect, Player& p){
 
 // TODO: void init to initialize all those global vars
 void init(){
+  DevMain::Init();
 
   #ifdef __EMSCRIPTEN__
   std::cout << "found emscripten!" << std::endl;
@@ -56,6 +59,7 @@ void init(){
 
 // TODO: void mainloop to define the stuff to happen every loop.
 void mainloop(){
+  DevMain::Update();
 
   if(quit){
     #ifdef __EMSCRIPTEN__

@@ -13,12 +13,9 @@ int main(int argc, char* argv[])
   devMain = DevMain();
   devMain.Init();
 
-  // start a singleton
   inputs = InputSingleton::GetInstance();
 
-  // event loop
   while (1){
-    // update stuff
     devMain.Update();
     
     inputs->Update();

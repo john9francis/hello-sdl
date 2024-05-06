@@ -1,19 +1,8 @@
 #include "viewer.hh"
 
-Viewer* Viewer::instance = nullptr;
-
-Viewer* Viewer::GetInstance(){
-  if (!instance){
-    instance = new Viewer();
-  }
-  return instance;
-}
-
 Viewer::Viewer(){
   const int WIDTH = 640;
   const int HEIGHT = 480;
-  SDL_Window* window = NULL;
-  SDL_Renderer* renderer = NULL;
 
   SDL_Init(SDL_INIT_VIDEO);
   window = SDL_CreateWindow("SDL2 Test", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
@@ -21,5 +10,18 @@ Viewer::Viewer(){
 }
 
 Viewer::~Viewer(){
+  SDL_DestroyRenderer(renderer);
+  SDL_DestroyWindow(window);
+  SDL_Quit();
+}
 
+void Viewer::OpenRender(){
+  // Set render color to black
+  SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+  SDL_RenderClear(renderer);
+}
+
+void Viewer::CloseRender(){
+  // display on viewer
+  SDL_RenderPresent(renderer);
 }

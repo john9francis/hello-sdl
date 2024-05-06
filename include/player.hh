@@ -1,5 +1,6 @@
 #include <iostream>
 #include "inputs.hh"
+#include <SDL2/SDL.h>
 
 #ifndef PLAYER_HH
 #define PLAYER_HH
@@ -9,15 +10,9 @@ public:
   Player();
 
   void Update();
-  void SetMovingLeft(bool movingLeft){moving_left = movingLeft;};
-  void SetMovingRight(bool movingRight){moving_right = movingRight;};
-  void SetMovingUp(bool movingUp){moving_up = movingUp;};
-  void SetMovingDown(bool movingDown){moving_down = movingDown;};
+  void Render(SDL_Renderer* renderer);
 
-  int GetX(){return x;};
-  int GetY(){return y;};
-  int GetWidth(){return width;};
-  int GetHeight(){return height;}
+  void UpdateRectPos();
 
 private:
   int x;
@@ -25,14 +20,11 @@ private:
   int width;
   int height;
 
-  bool moving_left;
-  bool moving_right;
-  bool moving_up;
-  bool moving_down;
-
   int speed;
 
   InputSingleton* inputs;
+
+  SDL_Rect* rect;
 };
 
 #endif

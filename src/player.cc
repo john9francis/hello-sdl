@@ -11,10 +11,9 @@ Player::Player(){
 
   inputs = InputSingleton::GetInstance();
 
-  moving_up = false;
-  moving_down = false;
-  moving_left = false;
-  moving_right = false;
+  // init the rect
+  rect = new SDL_Rect();
+  UpdateRectPos();
 }
 
 void Player::Update(){
@@ -30,4 +29,20 @@ void Player::Update(){
   if (inputs->d_down){
     x += speed;
   }
+
+  UpdateRectPos();
+}
+
+void Player::Render(SDL_Renderer* renderer){
+  // draw rect
+  SDL_SetRenderDrawColor(renderer, 255, 150, 255, 2);
+  SDL_RenderFillRect(renderer, rect);
+  SDL_RenderDrawRect(renderer, rect);
+}
+
+void Player::UpdateRectPos(){
+  rect->x = x;
+  rect->y = y;
+  rect->w = width;
+  rect->h = height;
 }

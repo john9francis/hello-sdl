@@ -5,13 +5,17 @@
 
 class Viewer{
 public:
-  static Viewer* GetInstance();
-
-private:
   Viewer();
   ~Viewer();
 
-  static Viewer* instance;
+  void OpenRender();
+  void CloseRender();
+
+  SDL_Renderer* GetRenderer(){return renderer;};
+
+private:
+  SDL_Renderer* renderer;
+  SDL_Window* window;
 };
 
 #endif

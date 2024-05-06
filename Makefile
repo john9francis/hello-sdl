@@ -1,8 +1,8 @@
 SRCDIR = src
 INCLUDEDIR = include
 SDLDIR = sdl
-WIN_DIST_DIR = win
-WEB_DIST_DIR = wasm
+WIN_DIST_DIR = windows
+WEB_DIST_DIR = web
 
 SRCS = $(wildcard $(SRCDIR)/*.cc)
 
@@ -34,3 +34,5 @@ web:
 	-s USE_SDL_IMAGE=2 \
 	-s SDL2_IMAGE_FORMATS='["png"]'
 	copy engine\index.html $(WEB_DIST_DIR)
+
+.PHONY: web windows

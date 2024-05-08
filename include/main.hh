@@ -3,6 +3,7 @@
 
 #include "viewer.hh"
 #include "player.hh"
+#include "audio.hh"
 
 class DevMain {
 public:
@@ -11,6 +12,7 @@ public:
 
   Viewer* viewer;
   Player* player;
+  AudioPlayer* audio;
 };
 
 

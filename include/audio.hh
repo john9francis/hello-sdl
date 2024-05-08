@@ -2,15 +2,25 @@
 #define AUDIO_PLAYER_HH
 
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_audio.h>
+#include "inputs.hh"
+
 
 class AudioPlayer{
 public:
   AudioPlayer();
   ~AudioPlayer();
 
+  void PlaySound();
+  void Update();
+
 private:
-}
+  SDL_AudioSpec wavSpec;
+  Uint32 wavLength;
+  Uint8* wavBuffer;
+  SDL_AudioDeviceID audioDevice;
+  InputSingleton* inputs;
+  bool audioPlaying;
+};
 
 
 #endif

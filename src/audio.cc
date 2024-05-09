@@ -43,6 +43,8 @@ void AudioPlayer::Update(){
     audioPlaying = true;
   }
 
+  // TODO resume AudioContect for web
+  
   if (SDL_GetQueuedAudioSize(audioDevice) == 0){
     audioPlaying = false;
   }

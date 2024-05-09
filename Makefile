@@ -23,6 +23,8 @@ windows:
 	-lSDL2main \
 	-lSDL2
 	copy $(SDLDIR)\SDL2-2.30.2\x86_64-w64-mingw32\bin\SDL2.dll $(WIN_DIST_DIR)
+	mkdir $(WIN_DIST_DIR)\assets
+	xcopy assets $(WIN_DIST_DIR)\assets /e
 
 web:
 	if exist $(WEB_DIST_DIR) rmdir /s /q $(WEB_DIST_DIR)	

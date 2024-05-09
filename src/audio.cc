@@ -16,7 +16,7 @@ int AudioPlayer::InitAudio(){
   }
 
   if (SDL_LoadWAV("assets/boing.wav", &wavSpec, &wavBuffer, &wavLength) == NULL) {
-    std::cout << "Failed to load WAV file: %s\n" << SDL_GetError() << std::endl;
+    std::cout << "Failed to load WAV file: " << SDL_GetError() << std::endl;
   }
 
   // Open audio device

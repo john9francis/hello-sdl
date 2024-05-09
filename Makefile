@@ -36,5 +36,7 @@ web:
 	-s USE_SDL_IMAGE=2 \
 	-s SDL2_IMAGE_FORMATS='["png"]'
 	copy engine\index.html $(WEB_DIST_DIR)
+	mkdir $(WEB_DIST_DIR)\assets
+	xcopy assets $(WEB_DIST_DIR)\assets /e
 
 .PHONY: web windows

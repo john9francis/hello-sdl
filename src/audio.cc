@@ -10,13 +10,17 @@ AudioPlayer::AudioPlayer(){
 }
 
 int AudioPlayer::InitAudio(){
+  int status = 0;
+
   // init audio
   if (SDL_Init(SDL_INIT_AUDIO) < 0) {
     std::cout << "SDL could not initialize! SDL_Error: " << SDL_GetError() << std::endl;
+    status = 1;
   }
 
   if (SDL_LoadWAV("assets/boing.wav", &wavSpec, &wavBuffer, &wavLength) == NULL) {
     std::cout << "Failed to load WAV file: " << SDL_GetError() << std::endl;
+    status = 2;
   }
 
   // Open audio device
@@ -24,9 +28,10 @@ int AudioPlayer::InitAudio(){
   if (audioDevice == 0) {
     std::cout << "Failed to open audio device:" << SDL_GetError() << std::endl;
     SDL_FreeWAV(wavBuffer);
+    status = 3;
   }
 
-  return 0;
+  return status;
 }
 
 AudioPlayer::~AudioPlayer(){
@@ -49,8 +54,6 @@ void AudioPlayer::Update(){
     audioPlaying = true;
   }
 
-  // TODO resume AudioContect for web
-  
   if (SDL_GetQueuedAudioSize(audioDevice) == 0){
     audioPlaying = false;
   }

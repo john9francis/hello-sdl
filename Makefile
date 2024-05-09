@@ -29,14 +29,16 @@ windows:
 web:
 	if exist $(WEB_DIST_DIR) rmdir /s /q $(WEB_DIST_DIR)	
 	mkdir $(WEB_DIST_DIR)
+	copy engine\index.html $(WEB_DIST_DIR)
+	mkdir $(WEB_DIST_DIR)\assets
+	xcopy assets $(WEB_DIST_DIR)\assets /e
 	emcc engine/web_main.cc $(SRCS) -o $(WEB_DIST_DIR)/index.js \
 	-I$(INCLUDEDIR) \
 	-I$(SRCDIR) \
 	-s USE_SDL=2 \
 	-s USE_SDL_IMAGE=2 \
-	-s SDL2_IMAGE_FORMATS='["png"]'
-	copy engine\index.html $(WEB_DIST_DIR)
-	mkdir $(WEB_DIST_DIR)\assets
-	xcopy assets $(WEB_DIST_DIR)\assets /e
+	-s SDL2_IMAGE_FORMATS='["png"]' \
+	--preload-file assets/
+	
 
 .PHONY: web windows

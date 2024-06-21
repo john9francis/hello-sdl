@@ -34,3 +34,4 @@ How to set up SDL:
 
 # Useful websites
 - [Emscription with SDL](https://wiki.libsdl.org/SDL2/README/emscripten)
+- [installing SDL on linux](https://github.com/libsdl-org/SDL/blob/main/docs/README-linux.md)
